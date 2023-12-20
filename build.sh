@@ -26,10 +26,6 @@ cd -
 # Build FDPP which is a dependency of dosemu2
 git clone https://github.com/dosemu2/fdpp
 cd fdpp
-# wget https://github.com/dosemu2/fdpp/archive/refs/tags/1.4.tar.gz
-# tar -zxf 1.4.tar.gz
-# cd fdpp-1.4
-cd fdpp
 make -j $(nproc)
 make install
 cd -
@@ -37,9 +33,6 @@ cd -
 # Build dosemu2
 git clone https://github.com/dosemu2/dosemu2
 cd dosemu2
-# wget https://github.com/dosemu2/dosemu2/archive/refs/tags/2.0pre9.tar.gz
-# tar -zxf 2.0pre9.tar.gz
-cd dosemu2-2.0pre9
 # autoreconf --install -v -I m4
 make -j $(nproc)
 ls -lh
