@@ -33,12 +33,12 @@ cd -
 # Build dosemu2
 git clone https://github.com/dosemu2/dosemu2
 cd dosemu2
-# ./configure --prefix=/usr # FIXME: Does not exist; how to do this?
+./default-configure --prefix=/usr
 make -j $(nproc)
-( mkdir -p appdir/usr ; cd appdir/usr ; ln -s . ./local ) # Bad hack, FIXME: Remove
 make install DESTDIR=$(readlink -f appdir) install ; find appdir/
 
 # Create AppImage
+ARCHITECTURE="x86_64" # TODO: Set based on the build system
 wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-${ARCHITECTURE}.AppImage" | head -n 1 | cut -d '"' -f 2)
 chmod +x appimagetool-*.AppImage
 ./appimagetool-*.AppImage -s deploy ./appdir/usr/share/applications/*.desktop --appimage-extract-and-run
