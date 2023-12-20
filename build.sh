@@ -11,13 +11,14 @@ fi
 apk update
 apk add ca-certificates build-base wget git bash clang nasm elfutils-dev flex bison \
 autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev \
-nasm flex bison libstdc++-dev
+nasm flex bison libstdc++-dev meson
 
 # Build and install nasm-segelf which is a dependency of FDPP (newer versions)
 # Is this documented somewhere?
 git clone https://github.com/stsp/nasm
 cd nasm
-./configure
+meson configure
+# ./cnofigure
 make -j $(nproc)
 make install
 cd -
