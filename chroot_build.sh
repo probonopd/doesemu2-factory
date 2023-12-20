@@ -56,5 +56,5 @@ sudo umount miniroot/proc miniroot/sys miniroot/dev
 if [ "$ARCHITECTURE" = "x86" ] ; then ARCHITECTURE=i686 ; fi
 
 mkdir out/
-sudo find miniroot/ | grep dosemu # TODO: Copy out
+cp miniroot/dosemu2/dosemu2-*.AppImage out/
 sudo rm -rf miniroot/
