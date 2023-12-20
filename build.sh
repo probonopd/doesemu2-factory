@@ -9,7 +9,9 @@ fi
 
 # Install build dependencies
 apk update
-apk add ca-certificates build-base wget git bash clang nasm elfutils-dev flex bison autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev
+apk add ca-certificates build-base wget git bash clang nasm elfutils-dev flex bison \
+autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev \
+nasm flex bison libstdc++-dev
 
 git clone https://github.com/dosemu2/fdpp
 cd fdpp
