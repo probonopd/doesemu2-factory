@@ -33,8 +33,9 @@ cd -
 # Build dosemu2
 git clone https://github.com/dosemu2/dosemu2
 cd dosemu2
-./configure --prefix=/usr
+# ./configure --prefix=/usr # FIXME: Does not exist; how to do this?
 make -j $(nproc)
+( mkdir -p appdir/usr ; cd appdir/usr ; ln -s . ./local ) # Bad hack, FIXME: Remove
 make install DESTDIR=$(readlink -f appdir) install ; find appdir/
 
 # Create AppImage
