@@ -16,6 +16,7 @@ apk add alsa-lib-dev \
     bdftopcf \
     bison \
     build-base \
+    gcc \
     git \
     flex \
     fontconfig \
