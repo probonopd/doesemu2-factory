@@ -11,7 +11,7 @@ fi
 apk update
 apk add ca-certificates build-base wget git bash clang nasm elfutils-dev flex bison \
 autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev \
-nasm flex bison libstdc++-dev meson \
+nasm flex bison libstdc++-dev meson findutils \
 imagemagick # Because there is no png icon yet; FIXME
 
 # Build and install nasm-segelf which is a dependency of FDPP (newer versions)
@@ -27,7 +27,6 @@ cd -
 # Build FDPP which is a dependency of dosemu2
 git clone https://github.com/dosemu2/fdpp
 cd fdpp
-./configure --prefix=/usr # Apparently must match what we set for dosemu2, or we run into "Add /usr/lib/fdpp to the libraryLocations directories we search for libraries; ERROR getDeps: did not find library libfdpp.so.35.10"
 make -j $(nproc)
 make install
 cd -
@@ -61,7 +60,10 @@ cd install-freedos
 make prefix=$(readlink -f ../appdir) install
 cd ..
 
-# Create AppImage
+# Workaround for non-standard library location
+cp /usr/local/lib/fdpp/* /usr/lib/
+export LD_LIBRARY_PATH=/usr/local/lib/fdpp/
+
 ARCHITECTURE="x86_64" # TODO: Set based on the build system
 wget -c -q https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-${ARCHITECTURE}.AppImage" | head -n 1 | cut -d '"' -f 2)
 chmod +x appimagetool-*.AppImage
