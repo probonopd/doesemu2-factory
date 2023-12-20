@@ -44,7 +44,7 @@ jobs:
         ARCHITECTURE: ${{ matrix.appimage_arch }}
       run: |
            sudo apt-get -y install qemu-user-static
-           ./chroot_build.sh
+           sh -ex ./chroot_build.sh
 
     - uses: actions/upload-artifact@v3
       with:
