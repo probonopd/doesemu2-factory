@@ -17,11 +17,13 @@ nasm flex bison libstdc++-dev meson
 # Is this documented somewhere?
 git clone https://github.com/stsp/nasm
 cd nasm
-meson configure
+mkdir build
+cd build
+meson configure ..
 # ./cnofigure
 make -j $(nproc)
 make install
-cd -
+cd ../..
 
 # Build FDPP which is a dependency of dosemu2
 git clone https://github.com/dosemu2/fdpp
