@@ -19,7 +19,7 @@ git clone https://github.com/stsp/nasm
 cd nasm
 ./configure
 make -j $(nproc)
-sudo make install
+make install
 cd -
 
 # Build FDPP which is a dependency of dosemu2
