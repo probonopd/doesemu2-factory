@@ -14,7 +14,7 @@ autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev \
 nasm flex bison libstdc++-dev
 
 # Build and install Linuxbrew which is needed to build newer versions of fdpp
-apk add curl file gzip libc6-compat ncurses ruby ruby-dbm ruby-etc ruby-irb ruby-json sudo
+apk add curl file gzip libc6-compat ncurses ruby ruby-etc ruby-irb ruby-json sudo
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 PATH=$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH
 brew update
