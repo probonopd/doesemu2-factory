@@ -31,4 +31,5 @@ apk add alsa-lib-dev \
 # Build
 git clone https://github.com/dosemu2/dosemu2
 cd dosemu2
+autoreconf --install -v -I m4
 make -j $(nproc)
