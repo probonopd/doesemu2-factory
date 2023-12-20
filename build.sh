@@ -25,8 +25,8 @@ apk add alsa-lib-dev \
     slang-dev \
     strace \
     file \
-    libexecinfo-dev \
-    gpm-dev
+    gpm-dev \
+    # libexecinfo-dev # Not available in Alpine Linux
 
 # Build
 git clone https://github.com/dosemu2/dosemu2
