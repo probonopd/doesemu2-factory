@@ -44,6 +44,7 @@ convert -resize 256x256 appdir/usr/share/dosemu/icons/dosemu.xpm appdir/usr/shar
 cat > appdir/usr/share/applications/dosemu.desktop <<\EOF
 [Desktop Entry]
 Name=dosemu2
+Type=Application
 Comment=DOS emulator
 Exec=dosemu
 Icon=dosemu.png
