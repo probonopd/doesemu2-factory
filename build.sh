@@ -31,7 +31,7 @@ cd -
 # cd dosemu2
 wget https://github.com/dosemu2/dosemu2/archive/refs/tags/2.0pre9.tar.gz
 tar -zxf 2.0pre9.tar.gz
-cd 2.0pre9
+cd dosemu2-2.0pre9
 # autoreconf --install -v -I m4
 make -j $(nproc)
 ls -lh
