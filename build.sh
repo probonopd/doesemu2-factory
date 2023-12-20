@@ -27,6 +27,7 @@ cd -
 # Build FDPP which is a dependency of dosemu2
 git clone https://github.com/dosemu2/fdpp
 cd fdpp
+# FIXME: get fdpp compiled to PREFIX /usr
 make -j $(nproc)
 make install
 cd -
@@ -64,6 +65,10 @@ cd ..
 cp /usr/local/lib/fdpp/* /usr/lib/
 export LD_LIBRARY_PATH=/usr/local/lib/fdpp/
 
+# Workaround for /usr/local/share/fdpp/ # FIXME: Once we get fdpp compiled to PREFIX /usr it will cleaner
+mkdir -p appdir/usr/local/share/
+cp -r /usr/local/share/fdpp appdir/usr/local/share/
+
 # Workaround because appimagetool can't deal with non-ELF main executables
 mv appdir/usr/bin/dosemu appdir/usr/bin/dosemu.script
 mv appdir/usr/bin/dosemu.bin appdir/usr/bin/dosemu
@@ -72,5 +77,7 @@ ARCHITECTURE="x86_64" # TODO: Set based on the build system
 wget -c -q https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-${ARCHITECTURE}.AppImage" | head -n 1 | cut -d '"' -f 2)
 chmod +x appimagetool-*.AppImage
 ./appimagetool-*.AppImage -s deploy ./appdir/usr/share/applications/*.desktop --appimage-extract-and-run
+# Workaround for paths to PREFIX that get compiled in at build time
+sed -i -e 's|/usr|././|g' appdir/usr/bin/dosemu
 # TODO: Customize AppRun script to launch dosemu2 in a meaningful way
 VERSION=1.0 ./appimagetool-*.AppImage ./appdir --appimage-extract-and-run # Turn AppDir into AppImage
