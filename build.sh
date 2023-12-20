@@ -37,7 +37,7 @@ make INSTALL_ROOT=appdir install ; find appdir/
 ls -lh
 
 # Create AppImage
-wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2)
+wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-${ARCHITECTURE}.AppImage" | head -n 1 | cut -d '"' -f 2)
 chmod +x appimagetool-*.AppImage
 ./appimagetool-*.AppImage -s deploy appdir/usr/share/applications/*.desktop
 VERSION=1.0 ./appimagetool-*.AppImage ./appdir # Turn AppDir into AppImage
