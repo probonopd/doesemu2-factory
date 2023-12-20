@@ -27,6 +27,7 @@ cd -
 # Build FDPP which is a dependency of dosemu2
 git clone https://github.com/dosemu2/fdpp
 cd fdpp
+./configure --prefix=/usr # Apparently must match what we set for dosemu2, or we run into "Add /usr/lib/fdpp to the libraryLocations directories we search for libraries; ERROR getDeps: did not find library libfdpp.so.35.10"
 make -j $(nproc)
 make install
 cd -
