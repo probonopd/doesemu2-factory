@@ -51,9 +51,14 @@ Icon=dosemu
 Categories=System;Emulator;
 EOF
 
-ldd appdir/usr/bin/dosemu
-
 find /usr | grep libfdpp
+ldd appdir/usr/bin/dosemu.bin
+
+# Get install-freedos scripts
+git clone https://github.com/dosemu2/install-freedos
+cd install-freedos
+make prefix=$(readlink -f ../appdir) install
+cd ..
 
 # Create AppImage
 ARCHITECTURE="x86_64" # TODO: Set based on the build system
