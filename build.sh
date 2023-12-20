@@ -40,5 +40,5 @@ ls -lh
 # Create AppImage
 wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-${ARCHITECTURE}.AppImage" | head -n 1 | cut -d '"' -f 2)
 chmod +x appimagetool-*.AppImage
-./appimagetool-*.AppImage -s deploy appdir/usr/share/applications/*.desktop
-VERSION=1.0 ./appimagetool-*.AppImage ./appdir # Turn AppDir into AppImage
+./appimagetool-*.AppImage -s deploy appdir/usr/share/applications/*.desktop --appimage-extract-and-run
+VERSION=1.0 ./appimagetool-*.AppImage ./appdir --appimage-extract-and-run # Turn AppDir into AppImage
