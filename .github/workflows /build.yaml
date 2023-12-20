@@ -3,9 +3,11 @@ name: build
 on:
   push:
     branches:    
-      - 'master'
+      - 'main'
   pull_request:
-  
+      branches:    
+      - 'main'
+
 # This ensures that jobs get canceled when force-pushing
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
