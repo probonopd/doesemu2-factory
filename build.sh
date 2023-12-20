@@ -15,6 +15,7 @@ nasm flex bison libstdc++-dev meson
 
 # Build and install nasm-segelf which is a dependency of FDPP (newer versions)
 # Is this documented somewhere?
+ln -s $(which ld) /usr/local/bin/x86_64-linux-gnu-ld
 git clone https://github.com/stsp/nasm
 cd nasm
 ./configure
