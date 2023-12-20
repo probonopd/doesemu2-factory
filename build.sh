@@ -18,6 +18,7 @@ nasm flex bison libstdc++-dev meson
 ln -s $(which ld) /usr/local/bin/x86_64-linux-gnu-ld
 git clone https://github.com/stsp/nasm
 cd nasm
+autoreconf -i
 ./configure
 make -j $(nproc)
 make install
