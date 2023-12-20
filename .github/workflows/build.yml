@@ -31,7 +31,7 @@ jobs:
       matrix:
         include:
         - { qemu_arch: x86,     appimage_arch: x86 }
-        - { qemu_arch: x86_64,  appimage_arch: x86_64 }
+        # { qemu_arch: x86_64,  appimage_arch: x86_64 }
         # { qemu_arch: armv7,   appimage_arch: armhf }
         # { qemu_arch: aarch64, appimage_arch: aarch64 }
 
