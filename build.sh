@@ -77,11 +77,15 @@ chmod +x appimagetool-*.AppImage
 
 # Workaround for paths to PREFIX that get compiled in at build time
 sed -i -e 's|/usr|././|g' appdir/usr/bin/dosemu
-# Workaround for /usr/local/share/fdpp/ # FIXME: Once we get fdpp compiled to PREFIX /usr it will cleaner
+sed -i -e 's|/usr|././|g' appdir/usr/lib/libfdldr.so.*
+
+# Workaround for /usr/local/share/fdpp/
+# FIXME: Once we get fdpp compiled to PREFIX /usr it will cleaner
+# Doing theis after "-s deploy", assuming we should not patch those files
 mkdir -p appdir/usr/local/share/
 cp -r /usr/local/share/fdpp appdir/usr/local/share/
 
-# TODO: Customize AppRun script to launch dosemu2 in a meaningful way
+# TODO: Customize AppRun script to launch dosemu2 in a meaningful way (e.g., set reqiured variables, etc.)
 
 # Convert AppDir to AppImage
 VERSION=1.0 ./appimagetool-*.AppImage ./appdir --appimage-extract-and-run # Turn AppDir into AppImage
