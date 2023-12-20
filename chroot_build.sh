@@ -17,7 +17,7 @@ cd -
 # Prepare chroot
 #############################################
 
-sudo cp -r ./src miniroot/src
+sudo cp -r ./dosemu2 miniroot/dosemu2
 
 sudo mount -o bind /dev miniroot/dev
 sudo mount -t proc none miniroot/proc
