@@ -35,7 +35,7 @@ git clone https://github.com/dosemu2/dosemu2
 cd dosemu2
 ./configure --prefix=/usr
 make -j $(nproc)
-make INSTALL_ROOT=$(readlink -f appdir) install ; find appdir/
+make install DESTDIR=$(readlink -f appdir) install ; find appdir/
 
 # Create AppImage
 wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-${ARCHITECTURE}.AppImage" | head -n 1 | cut -d '"' -f 2)
