@@ -19,8 +19,7 @@ git clone https://github.com/stsp/nasm
 cd nasm
 mkdir build
 cd build
-meson configure ..
-# ./cnofigure
+./configure
 make -j $(nproc)
 make install
 cd ../..
