@@ -1,0 +1,58 @@
+name: build
+
+on:
+  push:
+    branches:    
+      - 'master'
+  pull_request:
+  
+# This ensures that jobs get canceled when force-pushing
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+# The default Debian shell (dash) is faster than bash at running scripts,
+# and using bash when it is not needed doesn't make sense.
+defaults:
+  run:
+    shell: sh
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - { qemu_arch: x86,     appimage_arch: x86 }
+        - { qemu_arch: x86_64,  appimage_arch: x86_64 }
+        - { qemu_arch: armv7,   appimage_arch: armhf }
+        - { qemu_arch: aarch64, appimage_arch: aarch64 }
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Build
+      env:
+        ARCHITECTURE: ${{ matrix.appimage_arch }}
+      run: |
+           sudo apt-get -y install qemu-user-static
+           ./chroot_build.sh
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: artifacts
+        path: ./out/*
+
+    - name: Upload to releases
+      if: github.event_name != 'pull_request' && github.ref_name == 'master'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: out/*
+        tag_name: continuous
+        
