@@ -11,6 +11,7 @@ fi
 apk update
 apk add alsa-lib-dev \
     autoconf \
+    automake \
     bash \
     bdftopcf \
     bison \
@@ -26,7 +27,9 @@ apk add alsa-lib-dev \
     strace \
     file \
     gpm-dev \
-    # libexecinfo-dev # Not available in Alpine Linux
+    elfutils-dev # Possibly it can be used in place of
+    # libexecinfo-dev which is not available in Alpine Linux; see
+    # https://github.com/awslabs/aws-lambda-cpp/issues/124
 
 # Build
 git clone https://github.com/dosemu2/dosemu2
