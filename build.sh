@@ -64,8 +64,14 @@ cd ..
 cp /usr/local/lib/fdpp/* /usr/lib/
 export LD_LIBRARY_PATH=/usr/local/lib/fdpp/
 
+# Workaround because appimagetool can't deal with non-ELF main executables
+mv appdir/usr/bin/dosemu appdir/usr/bin/dosemu.wrapper
+mv appdir/usr/bin/dosemu.bin appdir/usr/bin/dosemu
+
 ARCHITECTURE="x86_64" # TODO: Set based on the build system
 wget -c -q https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-${ARCHITECTURE}.AppImage" | head -n 1 | cut -d '"' -f 2)
 chmod +x appimagetool-*.AppImage
 ./appimagetool-*.AppImage -s deploy ./appdir/usr/share/applications/*.desktop --appimage-extract-and-run
+mv appdir/usr/bin/dosemu.wrapper appdir/usr/bin/dosemu
+mv appdir/usr/bin/dosemu appdir/usr/bin/dosemu.bin
 VERSION=1.0 ./appimagetool-*.AppImage ./appdir --appimage-extract-and-run # Turn AppDir into AppImage
