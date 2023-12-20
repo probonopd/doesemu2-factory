@@ -11,8 +11,14 @@ fi
 apk update
 apk add ca-certificates build-base wget git bash clang nasm elfutils-dev flex bison autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev
 
+git clone https://github.com/dosemu2/fdpp
+cd fdpp
+make -j $(nproc)
+make install
+cd -
+ 
 # Build
 git clone https://github.com/dosemu2/dosemu2
 cd dosemu2
-autoreconf --install -v -I m4
+# autoreconf --install -v -I m4
 make -j $(nproc)
