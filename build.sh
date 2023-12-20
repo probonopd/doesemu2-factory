@@ -27,7 +27,8 @@ git clone https://github.com/dosemu2/fdpp
 cd fdpp
 # wget https://github.com/dosemu2/fdpp/archive/refs/tags/1.4.tar.gz
 # tar -zxf 1.4.tar.gz
-cd fdpp-1.4
+# cd fdpp-1.4
+cd fdpp
 make -j $(nproc)
 make install
 cd -
