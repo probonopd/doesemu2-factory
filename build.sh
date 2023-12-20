@@ -47,7 +47,7 @@ Name=dosemu2
 Type=Application
 Comment=DOS emulator
 Exec=dosemu
-Icon=dosemu.png
+Icon=dosemu
 Categories=System;Emulator;
 EOF
 
