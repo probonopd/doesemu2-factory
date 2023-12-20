@@ -51,6 +51,10 @@ Icon=dosemu
 Categories=System;Emulator;
 EOF
 
+ldd appdir/usr/bin/dosemu
+
+find /usr | grep libfdpp
+
 # Create AppImage
 ARCHITECTURE="x86_64" # TODO: Set based on the build system
 wget -c -q https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-${ARCHITECTURE}.AppImage" | head -n 1 | cut -d '"' -f 2)
