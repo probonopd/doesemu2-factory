@@ -9,28 +9,7 @@ fi
 
 # Install build dependencies
 apk update
-apk add alsa-lib-dev \
-    autoconf \
-    automake \
-    bash \
-    bdftopcf \
-    bison \
-    build-base \
-    gcc \
-    git \
-    flex \
-    fontconfig \
-    libao-dev \
-    linux-headers \
-    mkfontdir \
-    sdl2-dev \
-    slang-dev \
-    strace \
-    file \
-    gpm-dev \
-    elfutils-dev # Possibly it can be used in place of
-    # libexecinfo-dev which is not available in Alpine Linux; see
-    # https://github.com/awslabs/aws-lambda-cpp/issues/124
+apk add ca-certificates build-base wget git bash clang nasm elfutils-dev flex bison autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev
 
 # Build
 git clone https://github.com/dosemu2/dosemu2
