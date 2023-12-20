@@ -26,8 +26,9 @@ cd -
 # Build FDPP which is a dependency of dosemu2
 git clone https://github.com/dosemu2/fdpp
 cd fdpp
-make -j $(nproc)
-make install
+./configure.meson build
+meson compile --verbose -C build
+sudo meson install -C build
 cd -
  
 # Build dosemu2
