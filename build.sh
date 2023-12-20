@@ -33,6 +33,7 @@ cd -
 # Build dosemu2
 git clone https://github.com/dosemu2/dosemu2
 cd dosemu2
+./configure --prefix=/usr
 make -j $(nproc)
 make INSTALL_ROOT=$(readlink -f appdir) install ; find appdir/
 
