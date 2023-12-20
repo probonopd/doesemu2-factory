@@ -29,6 +29,6 @@ apk add alsa-lib-dev \
     gpm-dev
 
 # Build
-git clone https://github.com/dosemu2/dosemu
+git clone https://github.com/dosemu2/dosemu2
 cd /tmp/dosemu2
 make -j $(nproc)
