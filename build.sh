@@ -76,10 +76,11 @@ wget -c -q https://github.com/$(wget -q https://github.com/probonopd/go-appimage
 chmod +x appimagetool-*.AppImage
 ./appimagetool-*.AppImage -s deploy ./appdir/usr/share/applications/*.desktop --appimage-extract-and-run
 
-# Get precompiled COMMAND.COM and put it into the AppDir
+# Get precompiled command.com and put it into the AppDir
 mkdir -p ./appdir/usr/share/comcom32/
 wget -c -q https://dosemu2.github.io/comcom32/files/comcom32.zip
 unzip -o comcom32.zip -d ./appdir/usr/share/comcom32/
+mv appdir/usr/share/comcom32/comcom32.exe appdir/usr/share/comcom32/command.com
 
 # Workaround for paths to PREFIX that get compiled in at build time
 sed -i -e 's|/usr|././|g' appdir/usr/bin/dosemu
