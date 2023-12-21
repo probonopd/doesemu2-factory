@@ -11,7 +11,7 @@ fi
 apk update
 apk add ca-certificates build-base wget git bash clang elfutils-dev flex bison \
 autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev \
-flex bison libstdc++-dev findutils meson \
+flex bison libstdc++-dev findutils meson py3-pip \
 imagemagick # Because there is no png icon yet; FIXME
 
 # Build and install nasm-segelf which is a dependency of FDPP (newer versions)
@@ -81,6 +81,11 @@ mkdir -p ./appdir/usr/share/comcom32/
 wget -c -q https://dosemu2.github.io/comcom32/files/comcom32.zip
 unzip -o comcom32.zip -d ./appdir/usr/share/comcom32/
 mv appdir/usr/share/comcom32/comcom32.exe appdir/usr/share/comcom32/command.com
+
+# FreeDOS
+pip3 install tqdm
+./appdir/libexec/dosemu/dosemu-installfreedosuserspace
+# TODO: Pick it up from wherever it got installed to, and copy it into the AppDir
 
 # Workaround for paths to PREFIX that get compiled in at build time
 sed -i -e 's|/usr|././|g' appdir/usr/bin/dosemu
