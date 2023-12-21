@@ -35,7 +35,7 @@ cd -
 # Build dosemu2
 git clone https://github.com/dosemu2/dosemu2
 cd dosemu2
-git checkout fedae32 # TODO: Remove this
+git checkout 58bf3c1 # TODO: Remove this
 ./default-configure --prefix=/usr
 make -j $(nproc)
 make install DESTDIR=$(readlink -f appdir) install ; find appdir/
