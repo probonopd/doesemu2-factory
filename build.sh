@@ -87,9 +87,10 @@ sed -i -e 's|/usr|././|g' appdir/usr/lib/fdpp/libfdldr.so.*
 
 # Workaround for /usr/local/share/fdpp/
 # FIXME: Once we get fdpp compiled to PREFIX /usr it will cleaner
-# Doing theis after "-s deploy", assuming we should not patch those files
+# Doing this after "-s deploy", assuming we should not patch those files
 mkdir -p appdir/usr/local/share/
-cp -r /usr/local/share/fdpp appdir/usr/local/share/
+rm -rf appdir/usr/share/fdpp 2>/dev/null || true
+cp -r /usr/share/fdpp appdir/usr/share/
 
 # TODO: Customize AppRun script to launch dosemu2 in a meaningful way (e.g., set reqiured variables, etc.)
 
