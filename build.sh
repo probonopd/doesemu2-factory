@@ -11,7 +11,7 @@ fi
 apk update
 apk add ca-certificates build-base wget git bash clang nasm elfutils-dev flex bison \
 autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev \
-nasm flex bison libstdc++-dev meson findutils pipx \
+nasm flex bison libstdc++-dev findutils pipx \
 imagemagick # Because there is no png icon yet; FIXME
 
 # Build and install nasm-segelf which is a dependency of FDPP (newer versions)
