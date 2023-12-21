@@ -78,7 +78,7 @@ chmod +x appimagetool-*.AppImage
 
 # Workaround for paths to PREFIX that get compiled in at build time
 sed -i -e 's|/usr|././|g' appdir/usr/bin/dosemu
-sed -i -e 's|/usr|././|g' appdir/usr/lib/libfdldr.so.*
+sed -i -e 's|/usr|././|g' appdir/usr/lib/fdpp/libfdldr.so.*
 
 # Workaround for /usr/local/share/fdpp/
 # FIXME: Once we get fdpp compiled to PREFIX /usr it will cleaner
