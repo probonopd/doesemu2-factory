@@ -28,9 +28,9 @@ cd -
 pipx install meson
 git clone https://github.com/dosemu2/fdpp
 cd fdpp
-./configure.meson build
+./configure.meson build --prefix=/usr
 meson compile --verbose -C build
-sudo meson install -C build
+meson install -C build
 cd -
  
 # Build dosemu2
@@ -54,8 +54,8 @@ Icon=dosemu
 Categories=System;Emulator;
 EOF
 
-find /usr | grep libfdpp
-ldd appdir/usr/bin/dosemu.bin
+# find /usr | grep libfdpp
+# ldd appdir/usr/bin/dosemu.bin
 
 # Get install-freedos scripts
 git clone https://github.com/dosemu2/install-freedos
@@ -64,8 +64,8 @@ make prefix=$(readlink -f ../appdir) install
 cd ..
 
 # Workaround for non-standard library location
-cp /usr/local/lib/fdpp/* /usr/lib/
-export LD_LIBRARY_PATH=/usr/local/lib/fdpp/
+# cp /usr/local/lib/fdpp/* /usr/lib/
+# export LD_LIBRARY_PATH=/usr/local/lib/fdpp/
 
 # Workaround because appimagetool can't deal with non-ELF main executables
 mv appdir/usr/bin/dosemu appdir/usr/bin/dosemu.script
