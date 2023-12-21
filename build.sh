@@ -11,7 +11,7 @@ fi
 apk update
 apk add ca-certificates build-base wget git bash clang elfutils-dev flex bison \
 autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev \
-flex bison libstdc++-dev findutils meson py3-pip \
+flex bison libstdc++-dev findutils meson \
 imagemagick # Because there is no png icon yet; FIXME
 
 # Build and install nasm-segelf which is a dependency of FDPP (newer versions)
@@ -35,7 +35,7 @@ cd -
 # Build dosemu2
 git clone https://github.com/dosemu2/dosemu2
 cd dosemu2
-git checkout 58bf3c1 # TODO: Remove this
+# git checkout 58bf3c1 # Known working commit
 export VERSION=$(git rev-parse --short HEAD)
 ./default-configure --prefix=/usr
 make -j $(nproc)
@@ -63,10 +63,6 @@ cd install-freedos
 make prefix=$(readlink -f ../appdir) install
 cd ..
 
-# Workaround for non-standard library location
-# cp /usr/local/lib/fdpp/* /usr/lib/
-# export LD_LIBRARY_PATH=/usr/local/lib/fdpp/
-
 # Workaround because appimagetool can't deal with non-ELF main executables
 mv appdir/usr/bin/dosemu appdir/usr/bin/dosemu.script
 mv appdir/usr/bin/dosemu.bin appdir/usr/bin/dosemu
@@ -83,9 +79,9 @@ wget -c -q https://dosemu2.github.io/comcom32/files/comcom32.zip
 unzip -o comcom32.zip -d ./appdir/usr/share/comcom32/
 mv appdir/usr/share/comcom32/comcom32.exe appdir/usr/share/comcom32/command.com
 
-# FreeDOS
-pip3 install tqdm
-./appdir/libexec/dosemu/dosemu-installfreedosuserspace
+# FreeDOS - optional and not needed for the intended purpose. Also slow and pulls in depenedncies (py3-pip, tqdm from pip)
+# pip3 install tqdm
+# ./appdir/libexec/dosemu/dosemu-installfreedosuserspace
 # TODO: Pick it up from wherever it got installed to, and copy it into the AppDir
 
 # Workaround for paths to PREFIX that get compiled in at build time
