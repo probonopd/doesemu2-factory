@@ -36,6 +36,7 @@ cd -
 git clone https://github.com/dosemu2/dosemu2
 cd dosemu2
 git checkout 58bf3c1 # TODO: Remove this
+export VERSION=$(git rev-parse --short HEAD)
 ./default-configure --prefix=/usr
 make -j $(nproc)
 make install DESTDIR=$(readlink -f appdir) install ; find appdir/
@@ -101,4 +102,4 @@ cp -r /usr/share/fdpp appdir/usr/share/
 # TODO: Customize AppRun script to launch dosemu2 in a meaningful way (e.g., set reqiured variables, etc.)
 
 # Convert AppDir to AppImage
-VERSION=1.0 ./appimagetool-*.AppImage ./appdir --appimage-extract-and-run # Turn AppDir into AppImage
+./appimagetool-*.AppImage ./appdir --appimage-extract-and-run # Turn AppDir into AppImage
