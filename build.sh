@@ -91,7 +91,7 @@ sed -i -e 's|/usr|././|g' appdir/usr/lib/fdpp/libfdldr.so.*
 # ALSA patching... don't ask ;-)
 find appdir/usr/lib -type f -exec sed -i -e 's|/usr|././|g' {} \;
 mkdir -p appdir/usr/share/
-( cd appdir /usr/share/ ; ln -s /usr/share/alsa . )
+( cd appdir/usr/share/ ; ln -s /usr/share/alsa . )
 ( cd appdir/usr/lib/alsa-lib ; ln -s ../ lib )
 
 # Workaround for /usr/local/share/fdpp/
