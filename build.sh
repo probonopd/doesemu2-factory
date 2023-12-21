@@ -11,7 +11,7 @@ fi
 apk update
 apk add ca-certificates build-base wget git bash clang nasm elfutils-dev flex bison \
 autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev \
-nasm flex bison libstdc++-dev findutils meson \
+nasm flex bison libstdc++-dev findutils pipx \
 imagemagick # Because there is no png icon yet; FIXME
 
 # Build and install nasm-segelf which is a dependency of FDPP (newer versions)
@@ -25,6 +25,8 @@ make install
 cd -
 
 # Build FDPP which is a dependency of dosemu2
+pipx install meson
+pipx ensurepath
 git clone https://github.com/dosemu2/fdpp
 cd fdpp
 ./configure.meson build --prefix=/usr
