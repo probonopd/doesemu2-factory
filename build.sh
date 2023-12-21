@@ -88,6 +88,12 @@ mv appdir/usr/share/comcom32/comcom32.exe appdir/usr/share/comcom32/command.com
 sed -i -e 's|/usr|././|g' appdir/usr/bin/dosemu
 sed -i -e 's|/usr|././|g' appdir/usr/lib/fdpp/libfdldr.so.*
 
+# ALSA patching... don't ask ;-)
+find appdir/usr/lib -type f -exec sed -i -e 's|/usr|././|g' {} \;
+mkdir -p appdir/usr/share/
+( cd appdir /usr/share/ ; ln -s /usr/share/alsa . )
+( cd appdir/usr/lib/alsa-lib ; ln -s ../ lib )
+
 # Workaround for /usr/local/share/fdpp/
 # FIXME: Once we get fdpp compiled to PREFIX /usr it will cleaner
 # Doing this after "-s deploy", assuming we should not patch those files
