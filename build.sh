@@ -102,6 +102,9 @@ mkdir -p appdir/usr/local/share/
 rm -rf appdir/usr/share/fdpp 2>/dev/null || true
 cp -r /usr/share/fdpp appdir/usr/share/
 
+# Make relocation logic work even though main binary is executed via calling ld-linux
+mv appdir/lib/ld-musl-*.so.1 appdir/usr/bin/
+
 # TODO: Customize AppRun script to launch dosemu2 in a meaningful way (e.g., set reqiured variables, etc.)
 
 # Convert AppDir to AppImage
