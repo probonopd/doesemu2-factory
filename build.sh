@@ -12,7 +12,9 @@ apk update
 apk add ca-certificates build-base wget git bash clang elfutils-dev flex bison \
 autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev \
 flex bison libstdc++-dev findutils meson sdl2-dev sdl2 alsa-lib-dev alsa-plugins alsa-plugins-pulse \
-sdl2_ttf-dev fontconfig fontconfig-dev libxscrnsaver \
+sdl2_ttf-dev fontconfig fontconfig-dev libxscrnsaver libxrandr libxkbcommon libxi libxfixes libxext \
+libxcursor libx11 wayland-libs-egl wayland-libs-cursor wayland-libs-client eudev libsamplerate \
+mesa-gl mesa-gles mesa-gbm mesa-egl libdrm alsa-lib \
 imagemagick # Because there is no png icon yet; FIXME
 
 # Build and install nasm-segelf which is a dependency of FDPP (newer versions)
@@ -74,23 +76,22 @@ chmod +x appimagetool-*.AppImage
 ./appimagetool-*.AppImage --appimage-extract
 cp /usr/lib/libSDL2-2.0.so.0 /usr/lib/libSDL2-2.0.so.0.original
 ./squashfs-root/usr/bin/patchelf --add-needed libasound.so.2 /usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libsamplerate.so.0 /usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libdirectfb-1.7.so.7 /usr/lib/libSDL2-2.0.so.0
+# ./squashfs-root/usr/bin/patchelf --add-needed libdirectfb-1.7.so.7 /usr/lib/libSDL2-2.0.so.0
 ./squashfs-root/usr/bin/patchelf --add-needed libdrm.so.2 /usr/lib/libSDL2-2.0.so.0
 ./squashfs-root/usr/bin/patchelf --add-needed libEGL.so.1 /usr/lib/libSDL2-2.0.so.0
 ./squashfs-root/usr/bin/patchelf --add-needed libgbm.so.1 /usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libGLES_CM.so.1 /usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libGLESv1_CM.so.1 /usr/lib/libSDL2-2.0.so.0
+# ./squashfs-root/usr/bin/patchelf --add-needed libGLES_CM.so.1 /usr/lib/libSDL2-2.0.so.0
+# ./squashfs-root/usr/bin/patchelf --add-needed libGLESv1_CM.so.1 /usr/lib/libSDL2-2.0.so.0
 ./squashfs-root/usr/bin/patchelf --add-needed libGLESv2.so.2 /usr/lib/libSDL2-2.0.so.0
 ./squashfs-root/usr/bin/patchelf --add-needed libGL.so.1 /usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libjack.so.0 /usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libOpenGL.so.0 /usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libpipewire-0.3.so.0 /usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libpulse-simple.so.0 /usr/lib/libSDL2-2.0.so.0
+# ./squashfs-root/usr/bin/patchelf --add-needed libjack.so.0 /usr/lib/libSDL2-2.0.so.0
+# ./squashfs-root/usr/bin/patchelf --add-needed libOpenGL.so.0 /usr/lib/libSDL2-2.0.so.0
+# ./squashfs-root/usr/bin/patchelf --add-needed libpipewire-0.3.so.0 /usr/lib/libSDL2-2.0.so.0
+# ./squashfs-root/usr/bin/patchelf --add-needed libpulse-simple.so.0 /usr/lib/libSDL2-2.0.so.0
 ./squashfs-root/usr/bin/patchelf --add-needed libsamplerate.so.0 /usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libudev.so.0 /usr/lib/libSDL2-2.0.so.0
+# ./squashfs-root/usr/bin/patchelf --add-needed libudev.so.0 /usr/lib/libSDL2-2.0.so.0
 ./squashfs-root/usr/bin/patchelf --add-needed libudev.so.1 /usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libvulkan.so.1 /usr/lib/libSDL2-2.0.so.0
+# ./squashfs-root/usr/bin/patchelf --add-needed libvulkan.so.1 /usr/lib/libSDL2-2.0.so.0
 ./squashfs-root/usr/bin/patchelf --add-needed libwayland-client.so.0 /usr/lib/libSDL2-2.0.so.0
 ./squashfs-root/usr/bin/patchelf --add-needed libwayland-cursor.so.0 /usr/lib/libSDL2-2.0.so.0
 ./squashfs-root/usr/bin/patchelf --add-needed libwayland-egl.so.1 /usr/lib/libSDL2-2.0.so.0
