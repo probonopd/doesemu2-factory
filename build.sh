@@ -129,6 +129,10 @@ mkdir -p appdir/usr/share/
 ( cd appdir/usr/share/ ; ln -s /usr/share/alsa . )
 ( cd appdir/usr/lib/alsa-lib ; ln -s ../ lib )
 
+# dri
+mkdir -p appdir/usr/lib/xorg/modules/
+cp -r /usr/lib/xorg/modules/dri appdir/usr/lib/xorg/modules/
+
 # Workaround for /usr/local/share/fdpp/
 # FIXME: Once we get fdpp compiled to PREFIX /usr it will cleaner
 # Doing this after "-s deploy", assuming we should not patch those files
