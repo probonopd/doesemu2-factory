@@ -68,7 +68,7 @@ mv appdir/usr/bin/dosemu appdir/usr/bin/dosemu.script
 mv appdir/usr/bin/dosemu.bin appdir/usr/bin/dosemu
 
 # Declare the undeclared dependencies of libSDL2
-# ARCHITECTURE="x86_64" # TODO: Set based on the build system
+ARCHITECTURE="x86_64" # TODO: Set based on the build system
 wget -c -q https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-${ARCHITECTURE}.AppImage" | head -n 1 | cut -d '"' -f 2)
 chmod +x appimagetool-*.AppImage
 ./appimagetool-*.AppImage --appimage-extract
