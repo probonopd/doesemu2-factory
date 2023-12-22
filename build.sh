@@ -72,36 +72,37 @@ ARCHITECTURE="x86_64" # TODO: Set based on the build system
 wget -c -q https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-${ARCHITECTURE}.AppImage" | head -n 1 | cut -d '"' -f 2)
 chmod +x appimagetool-*.AppImage
 ./appimagetool-*.AppImage --appimage-extract
-./squashfs-root/usr/bin/patchelf --add-needed libasound.so.2 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libsamplerate.so.0 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libdirectfb-1.7.so.7 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libdrm.so.2 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libEGL.so.1 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libgbm.so.1 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libGLES_CM.so.1 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libGLESv1_CM.so.1 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libGLESv2.so.2 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libGL.so.1 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libjack.so.0 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libOpenGL.so.0 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libpipewire-0.3.so.0 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libpulse-simple.so.0 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libsamplerate.so.0 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libudev.so.0 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libudev.so.1 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libvulkan.so.1 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libwayland-client.so.0 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libwayland-cursor.so.0 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libwayland-egl.so.1 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libX11.so.6 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libX11-xcb.so ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libXcursor.so.1 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libXext.so.6 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libXfixes.so.3 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libXi.so.6 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libxkbcommon.so.0 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libXrandr.so.2 ./appdir/usr/lib/libSDL2-2.0.so.0
-./squashfs-root/usr/bin/patchelf --add-needed libXss.so.1 ./appdir/usr/lib/libSDL2-2.0.so.0
+cp /usr/lib/libSDL2-2.0.so.0 /usr/lib/libSDL2-2.0.so.0.original
+./squashfs-root/usr/bin/patchelf --add-needed libasound.so.2 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libsamplerate.so.0 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libdirectfb-1.7.so.7 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libdrm.so.2 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libEGL.so.1 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libgbm.so.1 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libGLES_CM.so.1 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libGLESv1_CM.so.1 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libGLESv2.so.2 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libGL.so.1 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libjack.so.0 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libOpenGL.so.0 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libpipewire-0.3.so.0 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libpulse-simple.so.0 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libsamplerate.so.0 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libudev.so.0 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libudev.so.1 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libvulkan.so.1 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libwayland-client.so.0 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libwayland-cursor.so.0 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libwayland-egl.so.1 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libX11.so.6 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libX11-xcb.so /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libXcursor.so.1 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libXext.so.6 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libXfixes.so.3 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libXi.so.6 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libxkbcommon.so.0 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libXrandr.so.2 /usr/lib/libSDL2-2.0.so.0
+./squashfs-root/usr/bin/patchelf --add-needed libXss.so.1 /usr/lib/libSDL2-2.0.so.0
 
 # Deploy dependencies into AppDir
 ./appimagetool-*.AppImage -s deploy ./appdir/usr/share/applications/*.desktop --appimage-extract-and-run
