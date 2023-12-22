@@ -14,7 +14,7 @@ autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev \
 flex bison libstdc++-dev findutils meson sdl2-dev sdl2 alsa-lib-dev alsa-plugins alsa-plugins-pulse \
 sdl2_ttf-dev fontconfig fontconfig-dev libxscrnsaver libxrandr libxkbcommon libxi libxfixes libxext \
 libxcursor libx11 wayland-libs-egl wayland-libs-cursor wayland-libs-client eudev libsamplerate \
-mesa-gl mesa-gles mesa-gbm mesa-egl libdrm alsa-lib mesa-dri-gallium \
+mesa-gl mesa-gles mesa-gbm mesa-egl libdrm alsa-lib mesa-dri-gallium llvm17-libs \
 imagemagick # Because there is no png icon yet; FIXME
 
 # Build and install nasm-segelf which is a dependency of FDPP (newer versions)
@@ -132,6 +132,7 @@ mkdir -p appdir/usr/share/
 # dri
 mkdir -p appdir/usr/lib/xorg/modules/
 cp -r /usr/lib/xorg/modules/dri appdir/usr/lib/xorg/modules/
+cp /usr/lib/libLLVM-17.so appdir/usr/lib/
 
 # Workaround for /usr/local/share/fdpp/
 # FIXME: Once we get fdpp compiled to PREFIX /usr it will cleaner
