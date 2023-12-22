@@ -14,7 +14,7 @@ autoconf git coreutils automake gawk pkgconfig linux-headers libbsd-dev \
 flex bison libstdc++-dev findutils meson sdl2-dev sdl2 alsa-lib-dev alsa-plugins alsa-plugins-pulse \
 sdl2_ttf-dev fontconfig fontconfig-dev libxscrnsaver libxrandr libxkbcommon libxi libxfixes libxext \
 libxcursor libx11 wayland-libs-egl wayland-libs-cursor wayland-libs-client eudev libsamplerate \
-mesa-gl mesa-gles mesa-gbm mesa-egl libdrm alsa-lib \
+mesa-gl mesa-gles mesa-gbm mesa-egl libdrm alsa-lib mesa-dri-gallium \
 imagemagick # Because there is no png icon yet; FIXME
 
 # Build and install nasm-segelf which is a dependency of FDPP (newer versions)
